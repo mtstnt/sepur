@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TrainEntity } from './train/entity/train.entity';
-import { TrainModule } from './train/train.module';
+import { Train } from './modules/train/entity/train.entity';
+import { TrainModule } from './modules/train/train.module';
 
 @Module({
   imports: [
@@ -11,7 +11,7 @@ import { TrainModule } from './train/train.module';
       password: '',
       port: 3306,
       database: 'sepur',
-      entities: [TrainEntity],
+      entities: [Train],
       synchronize: true,
     }),
     TrainModule,

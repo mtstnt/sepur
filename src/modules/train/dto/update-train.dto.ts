@@ -1,4 +1,4 @@
-export interface UpdateTrainDTO {
+export class UpdateTrainDTO {
   name?: string;
   description?: string;
 }
