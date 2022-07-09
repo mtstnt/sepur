@@ -8,6 +8,8 @@ import { ScheduleModule } from './modules/schedule/schedule.module';
 import { PurchaseModule } from './modules/purchase/purchase.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { User } from './modules/user/entities/user.entity';
+import { Admin } from './modules/admin/entities/admin.entity';
+import { AuthAdminModule } from './modules/auth-admin/auth-admin.module';
 
 @Module({
   imports: [
@@ -17,7 +19,7 @@ import { User } from './modules/user/entities/user.entity';
       password: '',
       port: 3306,
       database: 'sepur',
-      entities: [Train, User],
+      entities: [Train, User, Admin],
       synchronize: true,
     }),
     TrainModule,
@@ -26,6 +28,7 @@ import { User } from './modules/user/entities/user.entity';
     ScheduleModule,
     PurchaseModule,
     AuthModule,
+    AuthAdminModule
   ],
   controllers: [],
   providers: [],
