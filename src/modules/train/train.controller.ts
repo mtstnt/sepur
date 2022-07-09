@@ -1,5 +1,7 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, UseFilters } from "@nestjs/common";
+import { Body, Controller, Delete, Get, Param, Post, Put, UseFilters, UseGuards } from "@nestjs/common";
+import { AuthGuard } from "@nestjs/passport";
 import { HttpErrorFilter } from "src/filters/http_error.filter";
+import { JwtAuthGuard } from "../auth/guards/jwt.guard";
 import { CreateTrainDTO } from "./dto/create-train.dto";
 import { UpdateTrainDTO } from "./dto/update-train.dto";
 import { TrainService } from "./train.service";
@@ -8,6 +10,7 @@ import { TrainService } from "./train.service";
   path: 'api/trains',
 })
 @UseFilters(HttpErrorFilter)
+@UseGuards(JwtAuthGuard)
 export class TrainController {
   constructor(protected service: TrainService) {}
   

@@ -7,6 +7,7 @@ import { UserModule } from './modules/user/user.module';
 import { ScheduleModule } from './modules/schedule/schedule.module';
 import { PurchaseModule } from './modules/purchase/purchase.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { User } from './modules/user/entities/user.entity';
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import { AuthModule } from './modules/auth/auth.module';
       password: '',
       port: 3306,
       database: 'sepur',
-      entities: [Train],
+      entities: [Train, User],
       synchronize: true,
     }),
     TrainModule,
