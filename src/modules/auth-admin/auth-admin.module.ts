@@ -12,7 +12,7 @@ import { JwtAdminStrategy } from './strategy/jwt-admin.strategy';
   imports: [
     JwtModule.register({
       secret: AuthAdminConstants.JWT_SECRET_KEY,
-      signOptions: { expiresIn: '60s', },
+      signOptions: { expiresIn: '3600s', },
     }),
     AdminModule, 
     PassportModule

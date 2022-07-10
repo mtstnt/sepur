@@ -1,4 +1,4 @@
-import { Catch, Injectable } from "@nestjs/common";
+import { Catch, Injectable, UseInterceptors } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 import { CreateTrainDTO as CreateTrainDTO } from "./dto/create-train.dto";
@@ -12,23 +12,24 @@ export class TrainService {
   @InjectRepository(Train)
   protected repository: Repository<Train>
 
-  async findAllTrains() {
+  async findAll() {
     return await this.repository.find({ where: { status: true } });
   }
 
-  async findTrain(id: number) {
+  async find(id: number) {
     return await this.repository.find({ where: { id: id, status: true, } });
   }
 
-  async createTrain(data: CreateTrainDTO) {
-    return await this.repository.insert(data);
+  async create(data: CreateTrainDTO) {
+    let result = await this.repository.insert(data);
+    return await this.repository.findBy({ id: result.identifiers['id'] })
   }
 
-  async updateTrain(id: number, data: UpdateTrainDTO) {
+  async update(id: number, data: UpdateTrainDTO) {
     return await this.repository.update(id, data);
   }
 
-  async removeTrain(id: number) {
+  async remove(id: number) {
     return await this.repository.update(id, {
       status: false,
       deletedAt: () => 'CURRENT_TIMESTAMP',
