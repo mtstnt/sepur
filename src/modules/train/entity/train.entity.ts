@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { TrainType } from "./train-type.entity";
 
 @Entity({name: 'm_trains'})
 export class Train {
@@ -13,6 +14,9 @@ export class Train {
 
   @Column({ default: true })
   status: boolean;
+
+  @OneToMany(() => TrainType, (td) => td.train, { onDelete: 'CASCADE' })
+  types: TrainType[];
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;

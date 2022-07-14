@@ -6,4 +6,6 @@ export class CreateTrainDTO {
 
   @IsNotEmpty()
   description: string;
+
+  train_types?: string[];
 }
