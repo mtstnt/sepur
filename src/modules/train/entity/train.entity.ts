@@ -1,5 +1,5 @@
+import { TrainType } from "src/modules/train-types/entity/train-type.entity";
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { TrainType } from "./train-type.entity";
 
 @Entity({name: 'm_trains'})
 export class Train {

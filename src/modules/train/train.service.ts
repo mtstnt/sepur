@@ -1,9 +1,9 @@
 import { Catch, ConsoleLogger, Injectable, Logger } from "@nestjs/common";
 import { InjectDataSource, InjectRepository } from "@nestjs/typeorm";
 import { DataSource, EntityManager, InsertResult, Repository } from "typeorm";
+import { TrainType } from "../train-types/entity/train-type.entity";
 import { CreateTrainDTO as CreateTrainDTO } from "./dto/create-train.dto";
 import { UpdateTrainDTO } from "./dto/update-train.dto";
-import { TrainType } from "./entity/train-type.entity";
 import { Train } from "./entity/train.entity";
 
 @Injectable()

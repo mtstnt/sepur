@@ -15,7 +15,9 @@ import { City } from './modules/city/entities/city.entity';
 import { Station } from './modules/station/entities/station.entity';
 import { CityModule } from './modules/city/city.module';
 import { ProvinceModule } from './modules/province/province.module';
-import { TrainType } from './modules/train/entity/train-type.entity';
+import { TrainTypeModule } from './modules/train-types/train-type.module';
+import { TrainType } from './modules/train-types/entity/train-type.entity';
+import { Schedule } from './modules/schedule/entities/schedule.entity';
 
 @Module({
   imports: [
@@ -25,10 +27,11 @@ import { TrainType } from './modules/train/entity/train-type.entity';
       password: '',
       port: 3306,
       database: 'sepur',
-      entities: [Train, User, Admin, Province, City, Station, TrainType],
+      entities: [Train, User, Admin, Province, City, Station, TrainType, Schedule],
       synchronize: true,
     }),
     TrainModule,
+    TrainTypeModule,
     AdminModule,
     UserModule,
     ScheduleModule,

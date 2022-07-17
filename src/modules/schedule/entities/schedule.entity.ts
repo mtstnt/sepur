@@ -1,5 +1,5 @@
 import { Station } from "src/modules/station/entities/station.entity";
-import { TrainType } from "src/modules/train/entity/train-type.entity";
+import { TrainType } from "src/modules/train-types/entity/train-type.entity";
 import { Column, CreateDateColumn, DeleteDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity('schedules')

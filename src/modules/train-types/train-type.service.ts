@@ -1,7 +1,7 @@
 import { Catch, HttpException, Injectable, UseFilters } from "@nestjs/common";
 import { InjectDataSource, InjectRepository } from "@nestjs/typeorm";
 import { HttpErrorFilter } from "src/filters/http_error.filter";
-import { DataSource, Repository } from "typeorm";
+import { DataSource, QueryFailedError, Repository } from "typeorm";
 import { AddTypesDTO } from "./dto/train-type.dto";
 import { TrainType } from "./entity/train-type.entity";
 
@@ -18,7 +18,7 @@ export class TrainTypeService {
   ) {}
 
   async findTypesOfTrain(id: number) {
-    return await this.trainTypeRepository.find({ where: { status: true, train: { id: id } } });
+    return await this.trainTypeRepository.find({ where: { status: true, train: { id: id } }, relations: ["train"] });
   }
 
   async addToTrain(id: number, data: AddTypesDTO) {

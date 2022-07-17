@@ -1,15 +1,13 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TrainType } from './entity/train-type.entity';
+import { TrainTypeModule } from '../train-types/train-type.module';
 import { Train } from './entity/train.entity';
-import { TrainTypeController } from './train-type.controller';
-import { TrainTypeService } from './train-type.service';
 import { TrainController } from './train.controller';
 import { TrainService } from './train.service';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Train, TrainType])],
-  controllers: [TrainController, TrainTypeController],
-  providers: [TrainService, TrainTypeService],
+  imports: [TypeOrmModule.forFeature([Train])],
+  controllers: [TrainController],
+  providers: [TrainService],
 })
 export class TrainModule {}
